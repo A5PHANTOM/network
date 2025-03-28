@@ -1,0 +1,37 @@
+#include<stdio.h>
+#include<time.h>
+#include<stdlib.h>
+int main() {
+int tf,N,tt=0;
+srand(time(NULL));
+printf("enter the total number of frames");
+scanf("%d",&tf);
+printf("enter window size");
+scanf("%d",&N);
+int i=1;
+int k;
+while(i<=tf)
+{
+int z=0;
+for(k=i;k<i+N && k<=tf;k++)
+{
+printf("Sending Frames %d\n",k);
+tt++;
+}
+for (k=i;k<i+N && k<=tf;k++)
+{
+int f=rand()%2;
+if (!f){
+printf("Acknlodgment for Frame %d\n",k);
+z++;
+}
+else{
+printf("Timeout!!FAme nUmber %d Not Recieved\n",k);
+printf("Retransmitting Window.....\n");
+break;
+}}printf("\n");
+i=i+z;
+}
+printf("Total number of frames which were sent and resent are %d\n",tt);
+return 0;
+}
